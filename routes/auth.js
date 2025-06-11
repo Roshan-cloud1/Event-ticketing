@@ -1,5 +1,5 @@
 const express = require('express');
-const { registerUser, loginUser } = require('../controllers/authController');
+const { registerUser, loginUser, verifyUser } = require('../controllers/authController');
 const router = express.Router();
 
 router.post('/register', registerUser);
@@ -12,4 +12,9 @@ const authMiddleware = require('../middleware/authMiddleware');
 router.get('/me', authMiddleware, (req, res) => {
   res.json({ message: 'Protected route success!', user: req.user });
 });
+
+const { verifyEmailOtp } = require('../controllers/authController');
+router.post('/verify', verifyUser);
+
+
 

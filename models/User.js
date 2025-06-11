@@ -15,10 +15,19 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   role: {
-    type: String,
-    enum: ['organizer', 'attendee'],
-    default: 'attendee'
-  }
+  type: String,
+  enum: ["organizer", "attendee"], 
+  default: "attendee"
+}
+,
+  emailVerified: {
+  type: Boolean,
+  default: false
+},
+verificationCode: String,
+codeExpires: Date,
+
+
 }, {
   timestamps: true
 });
